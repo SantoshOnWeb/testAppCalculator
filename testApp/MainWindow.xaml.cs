@@ -18,8 +18,8 @@ namespace testApp
             txtCurrentEquation.DataContext = calculator;
             lstEquationHistory.DataContext = calculator;
 
-            // Subscribe to PropertyChanged event to update the ListBox when EquationHistory changes
-            calculator.PropertyChanged += Calculator_PropertyChanged;
+            // Set DataContext for the result TextBox as well
+            this.DataContext = calculator; // Setting DataContext for the whole window
         }
 
         private void Calculator_PropertyChanged(object sender, PropertyChangedEventArgs e)
