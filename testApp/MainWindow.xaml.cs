@@ -2,12 +2,14 @@
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading; // Add this for DispatcherTimer
 
 namespace testApp
 {
     public partial class MainWindow : Window
     {
         private Calculator calculator;
+        private DispatcherTimer clockTimer;
 
         public MainWindow()
         {
@@ -20,8 +22,27 @@ namespace testApp
 
             // Set DataContext for the result TextBox as well
             this.DataContext = calculator; // Setting DataContext for the whole window
+
+
+            // Initialize the clock
+            InitializeClock();
         }
 
+
+        private void InitializeClock()
+        {
+            // Create a timer that updates every second
+            clockTimer = new DispatcherTimer();
+            clockTimer.Interval = TimeSpan.FromSeconds(1);
+            clockTimer.Tick += ClockTimer_Tick;
+            clockTimer.Start(); // Start the timer
+        }
+
+        private void ClockTimer_Tick(object sender, EventArgs e)
+        {
+            // Update the clock TextBlock with the current time
+            txtClock.Text = DateTime.Now.ToString("HH:mm:ss");
+        }
         private void Calculator_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             // Update the ListBox to reflect changes in EquationHistory

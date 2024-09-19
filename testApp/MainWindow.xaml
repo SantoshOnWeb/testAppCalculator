@@ -41,6 +41,23 @@
                 </ListBox.ItemTemplate>
             </ListBox>
 
+            <!-- Clock Display -->
+            <Border Background="Black" CornerRadius="40" Padding="10" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-118,-166,0" Height="65" Width="207">
+                <TextBlock x:Name="txtClock" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="45" FontWeight="Bold" FontFamily="Segoe UI" Foreground="#FF80FF" RenderTransformOrigin="0.5,0.5" Width="192" Height="75" Margin="0,-10,0,0">
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="3"/>
+                    </TextBlock.Effect>
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+            </Border>
+
             <!-- Result display -->
             <TextBox Width="192" Text="{Binding Result}" IsReadOnly="True" Height="24" Margin="166,5,-166,174"/>
             <!-- Calculator buttons -->
